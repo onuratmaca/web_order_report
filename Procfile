@@ -1,1 +1,1 @@
-gunicorn web_order_report:app
+gunicorn web_order_report:app --timeout 120
