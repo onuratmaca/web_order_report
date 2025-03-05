@@ -1,7 +1,7 @@
 import io
 import json
 import re
-from flask import Flask, request, render_template, send_file, session, redirect, url_for
+from flask import Flask, request, render_template_string, send_file, session, redirect, url_for
 import PyPDF2
 import pandas as pd
 from docx import Document
@@ -293,7 +293,7 @@ def upload():
             table_html = final_df.to_html(classes="table table-bordered", index=False)
         else:
             table_html = "<p>No order items found.</p>"
-    return render_template(UPLOAD_FORM, version=VERSION, table_html=table_html)
+    return render_template_string(UPLOAD_FORM, version=VERSION, table_html=table_html)
 
 @app.route("/download_csv", methods=["POST"])
 def download_csv():
