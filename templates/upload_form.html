@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>Order Aggregation Report</title>
+</head>
+<body>
+  <h1>Order Aggregation Report</h1>
+  <form method="post" enctype="multipart/form-data">
+    <label>Select PDF File(s):</label><br>
+    <input type="file" name="pdf_files" multiple><br><br>
+    <input type="submit" value="Upload and Process">
+  </form>
+  {% if table_html %}
+    <h2>Aggregated Report</h2>
+    {{ table_html|safe }}
+    <form action="{{ url_for('download_csv') }}" method="post">
+      <input type="submit" value="Download CSV">
+    </form>
+    <form action="{{ url_for('download_docx') }}" method="post">
+      <input type="submit" value="Download DOCX">
+    </form>
+  {% endif %}
+</body>
+</html>
